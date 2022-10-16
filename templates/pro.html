@@ -1,0 +1,339 @@
+
+
+{% extends "header.html" %}
+
+{% block request %}{{unverified_user_count}}{% endblock %}
+
+{% block body%}
+
+</div>
+                            </div>       <div class="main" style="margin-top:15vh;">
+            <div class="container-fluid">
+                <div class="row">
+                    <!-- <div class="col-2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio nemo nisi, laudantium corporis deleniti quasi labore quisquam hic voluptas blanditiis cumque excepturi? Error recusandae quidem assumenda aliquam quas dolor autem!
+                    </div> -->
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-1 p-0">
+                                
+                            
+                            </div>
+                            <div class="col-lg-10 p-1">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="post-update card status-update-card"
+                    <style="background-color:rgba(69, 128, 138, 0.2); border-color:rgb(219, 219, 226);"></style>
+                            <div class="row">
+                                <div class="col">
+                                    <div class="row">
+                                        <div class="col-3 text-center">
+                                            <img src=" {{user_profile.profileimg.url}}" alt="" class="profile-photo rounded">
+                                        </div>
+                                        <div class="col-8 ml-5">
+                                            <div class="row mt-4">
+                                                <div class="col-9">
+                                                    <div class="row">
+                                                        <div class="col">
+                                                     <strong>       <h4 class="full-name w-100"><span>{{user_profile.name}}</span></h4></strong>
+                                                        </div>
+                                                                                                                    <div class="col">
+                                                                <a href="setting" class="btn btn-outline-dark">Edit Profile</a>
+                                                            </div>
+                                                                                                            </div>
+
+
+                                                    <h5 class="user-name">{{user.email}}</h5>
+
+
+
+                                                    
+                                                    
+                                                                                                    </div>
+                                                <div class="col-3">
+                                                                                                    </div>
+                                            </div>
+                                            <div class="row mt-5">
+                                             
+                                                        
+                                                    
+                                                    
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                   
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="profile-tabs mt-3 mb-3">
+                                                <ul class="nav nav-tabs justify-content-around" role="tablist">
+                                                    <li class="nav-item text-center w-25">
+                                                        <a href="thoughts" class="nav-link active font-weight-bold" >Thoughts</a>
+                                                    </li>
+                                                    <li class="nav-item text-center w-25">
+                                                        <a  href="about_me" class="nav-link font-weight-bold" >About</a>
+                                                    </li>
+                                                    <li class="nav-item text-center w-25">
+                                                        <a href="my_photos" class="nav-link font-weight-bold ">Photos</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+
+
+
+
+
+
+                                            
+                                            <!-- Tab panes -->
+                                            <div class="tab-content tab-page">
+                                                <div class="tab-pane active" id="tabs-1" role="tabpanel">
+                                                    <div class="posts-container">
+                <div class="post-item card m-3 my-3">
+    <div class="card-header d-flex align-items-center">
+                <a class="d-flex align-items-center" href="pro"><img src="{{user_profile.profileimg.url}}" class="profile-icon img-fluid rounded-circle" alt="">
+            <h5 class="user-name font-weight-200 ml-3 mt-2">{{user.email}}</h5>
+        </a>
+        <small class="ml-auto">27 days ago</small>
+    </div>
+    <div class="card-body p-0">
+        <div class="post-text m-2">
+            <h4 class="card-title"></h4>
+            <p class="card-text">
+                welcome to CScommunity            </p>
+        </div>
+        <div class="post-imaes">
+                    </div>
+    </div>
+    <div class="card-footer text-muted">
+        <div class="row mb-3">
+            <div class="col">
+                <a href="#" class="ml-1"><span class="likes">0</span> peoples liked this</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-center">
+                                <a href="10" class="like d-flex justify-content-center align-items-center">
+                    <h5><i class="fa unliked" aria-hidden="true"></i>
+                    <span id='like-text'>
+                        Like                    </span></h5>
+                    <span class="likes badge badge-primary mb-1 ml-2">0</span>
+                </a>
+                
+            </div>
+            <div class="col-4 text-center d-flex justify-content-center align-items-center">
+                <a href="" class="d-flex justify-content-center align-items-center">
+                <h5><i class="fa fa-align-center" aria-hidden="true"></i>
+                    Comment</h5>
+                <span class="badge badge-primary mb-1 ml-2">0</span>
+                </a>
+            </div>
+            <div class="col-4 text-center d-flex justify-content-center align-items-center">
+                <h5><i class="fa fa-paper-plane-o" aria-hidden ="true"></i>
+                    Share</h5>
+                <span class ="badge badge-primary mb-1 ml-2">0</span>
+            </div>
+        </div>
+        <hr>
+    
+        <div class="row">
+            <div class="col">
+                <div class="post-comments">
+                    <ul class="list-group list-group-flush">
+                                            </ul>
+                    <form action=" " method="post" class="form">
+                        <div class="form-inline d-flex">
+                            <input type="hidden" name="post_id" value="10">
+                            <div class="input-group flex-fill">
+                                <input type="text" name="comment_text" id="comment-text" class="form-control" placeholder="Whats your thoughts?" required>
+                            </div>
+                            <div class="input-group ml-1">
+                                <input type="submit" name="comment_submit" class="btn btn-primary fa" value="&#xf1d9; Comment">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr>      
+
+<div class="post-item card m-3 my-3">
+    <div class="card-header d-flex align-items-center">
+                <a class="d-flex align-items-center" href="./profile.php?user_id=5"><img src="" class="profile-icon img-fluid rounded-circle" >
+            <h5 class="user-name font-weight-200 ml-3 mt-2">lanka123@gmail.com</h5>
+        </a>
+        <small class="ml-auto">27 days ago</small>
+    </div>
+    <div class="card-body p-0">
+        <div class="post-text m-2">
+            <h4 class="card-title"></h4>
+            <p class="card-text">
+                yygkgjhgkggjgkg            </p>
+        </div>
+        <div class="post-imaes">
+         
+   
+            <div class="post-imaes">
+            
+         <a href="{{post.image.url}}"> <img src="{{post.image.url}}" class="post-img card-img-bottom m-auto p-1" alt=""></a>
+                         
+            </div>
+         
+           
+                    </div>
+    </div>
+    <div class="card-footer text-muted">
+        <div class="row mb-3">
+            <div class="col">
+                <a href="#" class="ml-1"><span class="likes">0</span> peoples liked this</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-4 text-center">
+                                <a href="9" class="like d-flex justify-content-center align-items-center">
+                    <h5><i class="fa unliked" aria-hidden="true"></i>
+                    <span id='like-text'>
+                        Like                    </span></h5>
+                    <span class="likes badge badge-primary mb-1 ml-2">0</span>
+                </a>
+                
+            </div>
+            <div class="col-4 text-center d-flex justify-content-center align-items-center">
+                <a href="./post.php?post_id=9" class="d-flex justify-content-center align-items-center">
+                <h5><i class="fa fa-align-center" aria-hidden="true"></i>
+                    Comment</h5>
+                <span class="badge badge-primary mb-1 ml-2">0</span>
+                </a>
+            </div>
+            <div class="col-4 text-center d-flex justify-content-center align-items-center">
+                <h5><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                    Share</h5>
+                <span class="badge badge-primary mb-1 ml-2">0</span>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="post-comments">
+                    <ul class="list-group list-group-flush">
+                                            </ul>
+                    <form action="" method="post" class="form">
+                        <div class="form-inline d-flex">
+                            <input type="hidden" name="post_id" value="9">
+                            <div class="input-group flex-fill">
+                                <input type="text" name="comment_text" id="comment-text" class="form-control" placeholder="What's your thoughts?" required>
+                            </div>
+                            <div class="input-group ml-1">
+                                <input type="submit" name="comment_submit" class="btn btn-primary fa" value="&#xf1d9; Comment">
+                            </div>
+                        </div>
+                      
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="gallery">
+                </div>
+        <!-- End of gallery -->
+
+        <div class="loader"></div>
+
+    </div>
+    <!-- End of container -->                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                     
+                </div>                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+        background: #1A2238 url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png") fixed;
+    }
+</style>
+
+<script>
+    $(document).on('click', '.like', function(e) {
+        var this_elem = $(this);
+        e.preventDefault();
+        post_id = $(this).attr('href');
+        user_id = 5;
+        $.ajax({
+            type: "GET",
+            datatype: "json",
+            url: "like_script.php",
+            data: "post_id=" + post_id + "&user_id=" + user_id,
+            cache: false,
+            success: function(data) {
+                data = JSON.parse(data);
+                if (data.status == 'liked') {
+                    this_elem.parent().parent().prev().find('.likes').text(data.total_likes);
+                    this_elem.find('.likes').text(data.total_likes);
+                    this_elem.find('#like-text').text('Unlike');
+                    this_elem.find('.unliked').addClass('liked').removeClass('unliked');
+                } else if (data.status == 'unliked') {
+                    this_elem.parent().parent().prev().find('.likes').text(data.total_likes);
+                    this_elem.find('.likes').text(data.total_likes);
+                    this_elem.find('#like-text').text('Like');
+                    this_elem.find('.liked').addClass('unliked').removeClass('liked');
+                } else {
+                    alert(data.status);
+                }
+            },
+            error: function(jqXHR, exception) {
+                alert('error: ' + eval(jqXHR.status));
+            }
+        });
+    });
+
+    $('#follow').on('click', function(e) {
+        var this_elem = $(this);
+        e.preventDefault();
+        follow_id = $(this).attr('href');
+        user_id = 5;
+        $.ajax({
+            type: "GET",
+            datatype: "json",
+            url: "follow_script.php",
+            data: "user_id=" + user_id + "&follow_id=" + follow_id,
+            cache: false,
+            success: function(data) {
+                data = JSON.parse(data);
+                if (data.status == 'followed') {
+                    $('#follow').text('Unfollow');
+                    $('#followers').text(data.followers);
+                    $('#following').text(data.following);
+                } else if (data.status == 'unfollowed') {
+                    $('#follow').text('Follow');
+                    $('#followers').text(data.followers);
+                    $('#following').text(data.following);
+                } else {
+                    alert(data.status);
+                }
+            },
+            error: function(jqXHR, exception) {
+                alert('error: ' + eval(jqXHR.status));
+            }
+        });
+    });
+</script>
+
+</html>
+{%endblock%}
+{% include "footer.html" %}

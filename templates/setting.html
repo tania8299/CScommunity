@@ -1,0 +1,154 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="main" style="margin-top:10vh;">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-1 p-0">
+            
+        
+        </div>
+        <div class="col-lg-11 p-2">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col">
+                        <div class="post-update card status-update-card"
+<style="background-color:rgba(69, 128, 238, 0.2); border-color:rgb(219, 219, 226);">
+<div class="card-body">
+                    <div class="col-11 offset-1">
+                        <div class="container bootstrap snippet">
+                          <hr>
+                            <h1 class="text-primary"><i class="fa fa-user mr-1"></i>Edit Profile</h1>
+                            <hr>
+                            <div class="row">
+                                <!-- left column -->
+                                
+                                
+                                
+                                <div class="col-md-3">
+                                    <div class="text-center">
+                                      <form  action="" method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <img  src="{{user_profile.profileimg.url}}" width="220" height="220n8" class="img-circle rounded-circle mb-2  border border-success"/> 
+                                        <div class="custom-file">
+                                         
+                                          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                                                              <label class="custom-file-label" for="files">Choose
+                                                                                file</label>
+                                                                             
+                                          <input type="file" name="image"class="custom-file-input" id="inputGroupFile01"
+                                          aria-describedby="inputGroupFileAddon01">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- edit form column -->
+                                <div class="col-md-8 personal-info">
+                                    <div class="alert alert-info alert-dismissable">
+                                        <a class="panel-close close pointer-event" style="cursor:pointer;" data-dismiss="alert">×</a>
+                                        <i class="fa fa-coffee"></i>
+                                        <strong>Hey!</strong> Here you can update your profile.
+                                    </div>
+                                  
+                                    <h3 class="my-3 ml-5">Edit Your Details</h3>
+                                  <hr>
+                                  <hr>
+
+                                    <div class="form-horizontal ml-2">
+                                      <div class="form-group">
+                                                 <label for="name">Name</label>
+                                                 <input type="text" name="name" class="form-control" value="{{user_profile.name}}" name="name" aria-describedby="nameHelp" >
+                                                 {% comment %} <small id="emailHelp" class="form-text text-muted"></small> {% endcomment %}
+                                               </div>
+                                        </div>
+                                        <div class="form-horizontal ml-2">
+                                        
+                                   </div>
+                                   <div class="form-horizontal ml-2">
+                                          <div class="form-group">
+                                            <label for="">Contact</label>
+                                            <input type="contact" name="contact" class="form-control" value="{{user_profile.contact}}"  aria-describedby="emailHelp">
+                                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                          </div>
+                                        </div>
+                                        <div class="form-horizontal ml-2">
+                                          <div class="form-group">
+                                            <label for="exampleInputEmail1">Batch</label>
+                                            
+                                            <input type="text" class="form-control"value="{{user_profile.batch}}" name="batch"id="exampleInputUSIN" aria-describedby="batchHelp">
+                                   </div>
+                                   </div>
+                                   <div class="form-horizontal ml-2">
+                                   <div class="form-group">
+                                          <label for="about"> Bio </label>
+                                         
+                                          <textarea id="exampleInputBio"style="height:11vh; max-height:auto; min-height:11vh;" class="form-control" name="bio">{{user_profile.bio}}</textarea>
+                                   </div>
+                                  </div>
+                                          <div class="form-horizontal ml-2">
+                                            <div class="form-group">
+                                            <label for=""> Location</label>
+                                            <input type="text"name="location" value="{{user_profile.location}}" placeholder="" class="form-control">
+                                        </div
+                                        
+                          
+                               </div>
+                               <div class="form-horizontal ml-2">
+                                   <div class="form-group">
+                                          <label >Technical exprience</label>
+                                         
+                                          <textarea style="height:11vh; max-height:auto; min-height:11vh;" class="form-control" name="techinal_experiance">{{user_profile.techinal_experiance}}</textarea>
+                                        
+                                        
+                                   </div>
+                               </div>
+                                         
+                                            <hr>
+                                            
+                                       
+                                        <div class="form-horizontal ml-2">
+                                          <div class="form-group">
+                                            <label for="exampleInputEmail1">Working-In</label>
+                                            <input type="Work" class="form-control" name="working" value="{{user_profile.working}}" id="exampleInputUSIN" aria-describedby="USINHelp">
+                                            <small id="USINHelp" class="form-text text-muted"></small>
+                                            <hr>
+                                          </div>
+                                     </div>
+                                    
+                                     
+                                        </div>
+                                    </div>
+                                  
+                                    <a href="/" class="btn btn-danger btn-block" align="center" aria-pressed="true">Cancel</a>
+
+                                    
+                                    
+                                      <button type="submit" class="btn btn-success btn-block ">Update</button>                                
+                                     
+                                  
+                             
+                                    
+                                    <hr>
+                                    <hr>
+                                       
+                                  </form>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+<style>
+  body {
+      background: #1A2238 url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png") fixed;
+
+
+  }
+ 
+</style>
+{% endblock %}

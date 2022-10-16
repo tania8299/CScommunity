@@ -1,0 +1,357 @@
+{% extends "header.html" %}
+{% block request %}{{unverified_user_count}}{% endblock %}
+
+{% block body%}
+<div class="main" style="margin-top:8vh;">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-1 p-0">
+                
+            
+            </div>
+            <div class="col-lg-10 p-1">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                            <div class="post-update card status-update-card"
+<style="background-color:rgba(69, 128, 238, 0.2); border-color:rgb(219, 219, 226);">
+<div class="card-body">
+<h4 class="card-title">Want to share something?</h4>
+<div class="row">
+    <div class="col">
+        <form action="upload" method="POST" enctype="multipart/form-data">
+       {% csrf_token %}
+           
+                    
+
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon00">What
+                        is the title?</span>
+                </div>
+                <input type="text" name="post_title" id="title" class="form-control" placeholder=""
+                    aria-describedby="inputGroupFileAddon00" autocomplete="off">
+            </div>
+
+            <div class="form-group mt-3">
+                <!-- <div class="input-group-prepend">
+                                                        <span class="input-group-text" id="inputGroupFileAddon01">Want
+                                                            to share something?</span>
+                                                    </div> -->
+                <textarea name="post_data" id="status" class="form-control" placeholder="Write your thoughts here!"
+                    aria-describedby="inputGroupFileAddon01"></textarea>
+
+            </div>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupFileAddon02">Want
+                        to show something?</span>
+                </div>
+                <div class="custom-file">
+                   
+                    
+                     <a href="#" class="button soft-warning small"> Choose file</a> 
+                    <input type="file" name="image_upload" class="custom-file-input" id="files"
+                        aria-describedby="inputGroupFileAddon02">
+                    <label class="custom-file-label" for="files">Choose
+                        file</label>
+                </div>
+            </div>
+            <div id="preview"></div>
+            <div class="input-group-lg">
+                <input type="submit" class="btn btn-primary w-100 mt-3" name="post" value="Let's Post This!">
+            </div>
+
+        </form>
+
+    </div>
+</div>
+</div>
+</div>        
+</div>
+</div>
+<br>
+{% comment %} #post 1 {% endcomment %}
+
+{% for post in posts %}
+ <div class="row">
+<div class="col">
+<div class="posts-container">
+<div class="post-item card m-3 my-3">
+
+<div class="card-header d-flex align-items-center">
+       
+ 
+<h5 class="user-name font-weight-200 ml-3 mt-2" ><a href="/pro/{{post.user}}">@{{post.user}}</a></h5>
+    <small class="ml-auto">27 days ago</small>
+</div>
+<div class="card-body p-0">
+<div class="post-text m-2">
+    <h4 class="card-title"></h4>
+   <strong> <p class="card-text">
+       {{post.post_title}} </p></strong>
+       <hr>
+       
+    </div>
+       <div class="card-body p-0">
+        <div class="post-text m-2">
+            <h4 class="card-title"></h4>
+            <p class="card-text">
+               {{post.post_data}} </p>
+               <br>
+       
+       
+     
+       <br>
+
+ </div> 
+ 
+     
+{% if post.image %}
+
+<div class="post-imaes">
+
+<a href="{{post.image.url}}"> <img src="{{post.image.url}}" class="post-img card-img-bottom m-auto p-1" alt=""></a>
+         
+</div>
+
+{% endif %}
+</div>
+
+           
+        </div>
+<div class="card-footer text-muted">
+<div class="row mb-3">
+    <div class="col">
+        
+    </div>
+</div>
+<div class="row">
+    <div class="col-4 text-center">
+        <a href= "/like-post?post_id={{post.id}}" class="flex items-center space-x-2">
+            <h5><i class="fa unliked" aria-hidden="true"></i>
+            <span id='like-text'>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="40" height="40" class="">
+                    <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
+                </svg>                  </span></h5>
+                {% if post.no_of_likes == 0 %}
+                <p>No likes</p>
+                {% elif post.no_of_likes == 1 %}
+                <p>Liked by {{post.no_of_likes}} person</p>
+                {% else %}
+                <p>Liked by {{post.no_of_likes}} people</p>
+                {% endif %}
+            
+        </a>
+      
+      
+    </div>
+    <div class="col-4 text-center d-flex justify-content-center align-items-center">
+      
+    </div>
+    <div class="col-4 text-center d-flex justify-content-center align-items-center">
+        <a href="" class="d-flex justify-content-center align-items-center">
+           
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="40" height="40" class="">
+                    <path fill-rule="evenodd" d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z" clip-rule="evenodd" />
+                </svg></h5>
+            <span class="badge badge-primary mb-1 ml-2">0</span>
+            </a>
+    </div>
+</div>
+
+
+<hr>
+<div class="row">
+    <div class="col">
+        <div class="post-comments">
+            <ul class="list-group list-group-flush">
+                                    </ul>
+            <form action="" method="POST" class="form">
+                {% csrf_token %}
+                <div class="form-inline d-flex">
+                    <input type="hidden" name="post_id" value="10">
+                    <div class="input-group flex-fill">
+                        <input type="text" name="comment_data" id="comment-text" class="form-control" placeholder="What's your thoughts?" required>
+                    </div>
+                    <div class="input-group ml-1">
+                        <input type="submit"  class="btn btn-primary fa" value=" Comment">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+
+
+</div>
+{%endfor%}
+
+<br>
+
+
+<hr>  
+{% comment %} {%for post in posts%} 
+<div class="post-item card m-3 my-3">
+<div class="card-header d-flex align-items-center">
+<img src="{{user_profile.profileimg.url}}" class="profile-icon rounded-circle z-depth-2" alt="">
+<h5 class="user-name font-weight-200 ml-3 mt-2">@{{post.user}}</h5>
+</a>
+<small class="ml-auto">27 days ago</small>
+</div>
+<div class="card-body p-0">
+<div class="post-text m-2">
+    <h4 class="card-title"></h4>
+    <p class="card-text">
+        {{post.post_title}} </p>
+        <div class="card-body p-0">
+            <div class="post-text m-2">
+                <h4 class="card-title"></h4>
+                <p class="card-text">
+                    {{post.post_}} </p>
+</div>
+{% if post.image %}
+
+<div class="post-imaes">
+
+<a href=""> <img src="{{post.image.url}}" class="post-img card-img-bottom m-auto p-1" alt=""></a>
+             
+</div>
+
+{% endif %}         
+
+</div>
+<div class="card-footer text-muted">
+<div class="row mb-3">
+    <div class="col">
+        <a href="#" class="ml-1"><span class="likes">0</span> peoples liked this</a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-4 text-center">
+                        <a href="9" class="like d-flex justify-content-center align-items-center">
+            <h5><i class="fa unliked" aria-hidden="true"></i>
+            <span id='like-text'>
+                Like                    </span></h5>
+            <span class="likes badge badge-primary mb-1 ml-2">0</span>
+        </a>
+        
+    </div>
+    <div class="col-4 text-center d-flex justify-content-center align-items-center">
+        <a href="./post.php?post_id=9" class="d-flex justify-content-center align-items-center">
+        <h5><i class="fa fa-align-center" aria-hidden="true"></i>
+            Comment</h5>
+        <span class="badge badge-primary mb-1 ml-2">0</span>
+        </a>
+    </div>
+  
+<hr>
+<div class="row">
+    <div class="col">
+        <div class="post-comments">
+            <ul class="list-group list-group-flush">
+                                    </ul>
+            <form action="./comment_script.php" method="post" class="form">
+                <div class="form-inline d-flex">
+                    <input type="hidden" name="post_id" value="9">
+                    <div class="input-group flex-fill">
+                        <input type="text" name="comment_text" id="comment-text" class="form-control" placeholder="What's your thoughts?" required>
+                    </div>
+                    <div class="input-group ml-1">
+                        <input type="submit" name="comment_submit" class="btn btn-primary fa" value="&#xf1d9; Comment">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{%endfor%} {% endcomment %}
+<hr>                                                                                            <div class="post-item card m-3 my-3">
+
+
+<hr>                    
+                          
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+<script>
+$(document).ready(function() {
+if (window.File && window.FileList && window.FileReader) {
+    $("#files").on("change", function(e) {
+        var files = e.target.files,
+            filesLength = files.length;
+        for (var i = 0; i < filesLength; i++) {
+            var f = files[i]
+            var fileReader = new FileReader();
+            fileReader.onload = (function(e) {
+                var file = e.target;
+                $("<span class=\"pip\">" +
+                    "<img class=\"imageThumb\" src=\"" + e.target.result +
+                    "\" title=\"" + file.name + "\"/>" +
+                    "<br/><span class=\"remove\"><button type=\"button\" class=\"btn btn-sm\"><i class=\"fa fa-trash\"></i> Remove</button></span>" +
+                    "</span>").insertAfter("#preview");
+                $(".remove").click(function() {
+                    $(this).parent(".pip").remove();
+                });
+            });
+            fileReader.readAsDataURL(f);
+        }
+    });
+} else {
+    alert("Your browser doesn't support to File API")
+}
+});
+
+$(document).on('click', '.like', function(e) {
+var this_elem = $(this);
+e.preventDefault();
+post_id = $(this).attr('href');
+user_id = 5;
+$.ajax({
+    type: "GET",
+    datatype: "json",
+    url: "like_script.php",
+    data: "post_id=" + post_id + "&user_id=" + user_id,
+    cache: false,
+    success: function(data) {
+        data = JSON.parse(data);
+        if (data.status == 'liked') {
+            this_elem.parent().parent().prev().find('.likes').text(data.total_likes);
+            this_elem.find('.likes').text(data.total_likes);
+            this_elem.find('#like-text').text('Unlike');
+            this_elem.find('.unliked').addClass('liked').removeClass('unliked');
+        } else if (data.status == 'unliked') {
+            this_elem.parent().parent().prev().find('.likes').text(data.total_likes);
+            this_elem.find('.likes').text(data.total_likes);
+            this_elem.find('#like-text').text('Like');
+            this_elem.find('.liked').addClass('unliked').removeClass('liked');
+        } else {
+            alert(data.status);
+        }
+    },
+    error: function(jqXHR, exception) {
+        alert('error: ' + eval(jqXHR.status));
+    }
+});
+});
+</script>
+<style>
+    body {
+        background: #1A2238 url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png") fixed;
+    }
+    
+</style>
+
+{% endblock %}
+
+
+
+
+
+

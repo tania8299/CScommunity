@@ -1,0 +1,155 @@
+
+{% include "header.html" %}
+{% load static %}
+
+         
+       
+                     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap" rel="stylesheet">
+                     <style type="text/css">
+                     *{
+                     margin: 0; padding:0; box-sizing: border-box;
+                     ;}
+                     .grand_parent{ width: 100vw; height:100%;
+                            background: #fff; color: #fff;}
+                             
+                     h4{
+                            font-size: 1.3rem;
+                            padding: 1px 0;
+                            text-align: center;
+                            color: #000;
+                     }
+                     p{
+                            text-align: center;
+                     }
+                     .parents{ width: 93vw; height: auto; margin: auto;
+                            display: flex;  justify-content: space-around;
+                            flex-wrap: wrap; transition: all 0.2 linear;
+                     }
+                     .child{
+                            height: 650px;
+                            background:#81ecec;
+                            box-shadow: 0 0 20px #141e9f;
+                            flex:1 1 200px;
+                            margin: 20px;
+                     }
+       
+                     .child:first-child{
+                            background: #007bff;
+                     }
+                     .child:last-child{
+                            background: #5B5EA6;
+                            height: 550px;
+                     
+                     }
+                     @media (max-width: 768px){
+                            .grand_parent{height: 50px;; }
+                     }
+                     .cente {
+                     margin: 3px;
+                    
+                      
+                 border: 3px solid #fbfbfb;
+                 border-radius: 1.2rem;
+                 
+               padding: 15px;
+              }   
+                     
+
+               
+                   .alu {
+                                                        box-sizing: border-box;
+                                                 }
+                                                 
+                                                 .column {
+                                                       
+                                                        width: 27.33%;
+                                                        padding: 0px;
+                                                        border: 3px solid #fbfbfb;
+                                                       
+                                                     width: 16%;margin: 7px;
+                                                     margin-left: 30px;
+                                                     display: inline-block;
+  margin: 8px 31px;
+                                                 }
+                                                 
+                                                 .row::after {
+                                                        content: "";
+                                                        display: table;
+                                                        clear: both;
+                                                 }
+                                              
+                                                 .c{
+                            height: 400px;
+                            
+                            background:#B10DC9;
+                            box-shadow: 0 0 20px #141e9f;
+                            flex:1 1 200px;
+                            margin: 20px;
+                     }    
+                
+                                
+
+                     </style>
+              </head>
+              <body>
+                     <div class="grand_parent">
+                            <h4> <b>“Learning to code is learning to create and innovate”</b></h4>
+                            <div class="parents">
+                                   <div class="child">
+                                         <center><h2>Books Section</h2></center> 
+                                         <a class="btn btn-dark" href="https://www.python.org/downloads/" role="button">Python Compiler Download</a>
+                                         
+                                         <a class="btn btn-dark" href="https://www.oracle.com/java/technologies/downloads/" role="button">JAVA Compiler Download</a><br>
+                                        
+                                         <hr class="my-2">
+                                         
+                                          <p class="cente" <b> <a>Books for learing Programming languages</a></b> </p>
+                                               
+                                          <div ;align="left">
+                    
+                                           
+                   
+                                          
+                                   
+                                   <div class="child">
+                                          
+                                          <p class="cente">Thapa Technical</p> 
+                                   </div>
+                                  
+                            </div>
+                            <div class="parents">
+                                   <div class="c">
+                                         <center><h1>coding</h1></center> 
+                                          <p class="cente">Thapa Technical</p>
+                                                        <div ;align="left">
+                    
+                                           
+                      
+                      
+                      
+                                          <div class="alu">
+                                               
+                                                              
+                                                               
+                                                               </div>
+                                                        </div>
+                                   </div>
+                                  
+                                   
+                                   
+                                   </div>
+                                  </div>
+                                  
+                     </div>
+        
+                     
+                         </div>
+              
+                         {% include "footer.html" %}
+
+
+        
+       
+
+
+         

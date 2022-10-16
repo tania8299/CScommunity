@@ -1,0 +1,213 @@
+
+{% extends "header.html" %}
+{% block request %}{{unverified_user_count}}{% endblock %}
+
+{% block body%}
+{% load static %}
+
+         
+       
+                     <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap" rel="stylesheet">
+                     <style type="text/css">
+                         
+                              
+                             
+                     *{
+                     margin: 0; padding:0; box-sizing: border-box;
+                     ;}
+                     .grand_parent{ width: 98vw; height:100%;
+                            background: #1A2238; color: #fff;}
+                             
+                     h4{
+                            font-size: 1.3rem;
+                            padding: 1px 0;
+                            text-align: center;
+                            color: #fff;
+                     }
+                     p{
+                            text-align: center;
+                     }
+                     .parents{ width: 94vw; height: auto; margin: auto;
+                            display: flex;  justify-content: space-around;
+                            flex-wrap: wrap; transition: all 0.2 linear;
+                     }
+                     .child{
+                            height: 670px;
+                            background:#fff;
+                            box-shadow: 0 0 20px #141e9f;
+                            flex:1 1 200px;
+                            margin: 20px;
+                     }
+       
+                     .child:first-child{
+                            background: #fff;
+                     }
+                     .child:last-child{
+                            background: #fff;
+                            height: 670px;
+                     
+                     }
+                     @media (max-width: 768px){
+                            .grand_parent{height: 50px;; }
+                     }
+                     .cente {
+                     margin: 3px;
+                    
+                      
+                 border: 3px solid #1A2238;
+                 border-radius: 1.2rem;
+                 
+               padding: 15px;
+              }   
+                     
+
+               
+                   .alu {
+                                                        box-sizing: border-box;
+                                                 }
+                                                 
+                                                 .column {
+                                                       
+                                                        width: 27.33%;
+                                                        padding: 0px;
+                                                        border: 3px solid #1A2238;
+                                                       
+                                                     width: 16%;margin: 7px;
+                                                     margin-left: 30px;
+                                                     display: inline-block;
+  margin: 8px 31px;
+                                                 }
+                                                 
+                                                 .row::after {
+                                                        content: "";
+                                                        display: table;
+                                                        clear: both;
+                                                 }
+                                              
+                                                 .c{
+                            height: 60px;
+                            
+                            background:#B10DC9;
+                            box-shadow: 0 0 20px #141e9f;
+                            flex:1 1 200px;
+                            margin: 20px;
+                     }    
+                
+                                
+
+                     </style>
+              </head>
+              <body>
+                     <hr>
+                     <hr>
+                     <hr>
+                     <div class="grand_parent">
+                            <h4> <b>“Learning to code is learning to create and innovate”</b></h4>
+                            <div class="parents">
+                                   <div class="child">
+                                      <mark>   <center><h2>Books Section</h2></center> <mark>
+                                         <a class="btn btn-dark" href="https://www.python.org/downloads/" role="button">Python Compiler Downlode</a>
+                                         
+                                         <a class="btn btn-dark" href="https://www.oracle.com/java/technologies/downloads/" role="button">JAVA Compiler Download</a><br>
+                                        
+                                         <hr class="my-3">
+                                         
+                                        <p class="cente" <b>  <mark> <a>Books for learing Programming languages</a></mark></b> </p>
+                                               
+                                          <div ;align="left">
+                    
+                                           
+                   
+                                                 <div class="alu">
+                                                        <div class="row">
+                                                               
+                                                               <div class="column">
+                                                                      <img src="{%static 'pic/java.png' %}" width="108" height="150">
+                                                                      <a class=" btn btn-success"  href="/static/files/java.pdf" role="button"  >Download</a>
+                                                               </div>
+                                                 
+                                                               <div class="column">
+                                                                      <img src="/static/pic/ai.jpg" width="108" height="150" class="rounded">
+                                                                      <a class=" btn btn-success" href="/static/files/AI.pdf" role="button"  >Download</a>
+                                                               </div>
+                                                               <div class="column">
+                                                                      <img src="/static/pic/dbms.jpg" width="108" height="150">
+                                                                      <a class=" btn btn-success" href="/static/files/dbms.pdf" role="button"  >Download</a>
+                                                               </div>
+                                                               <div class="column">
+                                                                      <img src="/static/pic/python.jfif" width="108" height="150">
+                                                                      <a class=" btn btn-success" href="/static/files/python.pdf" role="button"  >Download</a>
+                                                               </div>
+                                                               
+                                                               
+                                                               </div>
+                                                        </div>
+                                                       <p class="cente">Books for learing Programming languages</p>   
+                                          
+                             
+                                                        <div class="alu">
+                                                               <div class="row">
+                                                                      <div class="column">
+                                                                             <img src="/static/pic/dsa.jfif" width="108" height="150">
+                                                                             <a class=" btn btn-success" href="/static/files/dsa.pdf" role="button"  >Download</a>
+                                                                      </div>
+                                                        
+                                                                      <div class="column">
+                                                                             <img src="/static/pic/cpp.jfif" width="108" height="150" class="rounded">
+                                                                             <a class=" btn btn-success" href="/static/files/cpp.pdf" role="button"  >Download</a>
+                                                                      </div>
+                                                                     <div class="column">
+                                                                             <img src="/static/pic/network.jfif" width="108" height="150">
+                                                                             <a class=" btn btn-success" href="/static/files/network.pdf" role="button"  >Download</a>
+                                                                      </div>
+                                                                      <div class="column">
+                                                                             <img src="/static/pic/architec.jfif" width="108" height="150">
+                                                                             <a class=" btn btn-success" href="/static/files/architecture.pdf" role="button"  >Download</a>
+                                                                      </div>
+                                                                      
+                                                                      
+                                                                      <center><a class="btn btn-lg btn-dark" href="https://www.pdfdrive.com/computer-science-books.html">CLICK here for more books</a></center>
+                                                                             
+                                                               </div>
+                                                      
+                                                               
+                                                        </div>
+                                          </div>
+                                          </div>
+                                   
+                                   <div class="child">
+                                          
+                                   <mark>       <p class="cente">Thapa Technical</p> </mark> 
+                                   </div>
+                                  
+                            </div>
+                           
+                      
+                      
+                                                        </div>
+                                   </div>
+                                  
+                                   
+                                   
+                                   </div>
+                                  </div>
+                                  
+                     </div>
+        
+                     
+                         </div>
+                         <style>
+                            body {
+                                background: #1A2238 url("https://www.toptal.com/designers/subtlepatterns/patterns/sports.png") fixed;
+                            }
+                            
+                        </style>
+              {%endblock%}
+                         
+
+
+        
+       
+
+
+         

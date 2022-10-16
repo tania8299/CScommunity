@@ -1,0 +1,287 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>This is a Post</title>
+    <?php require_once "./includes/links.php"; ?>
+    <style>
+        .liked:before {
+            content: "\f004";
+        }
+
+        .unliked:before {
+            content: "\f08a";
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-main">
+        <?php include_once "./includes/header.php"; ?>
+        <div class="main" style="margin-top: 15vh;">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-1">
+                        
+                    </div>
+                    <div class="col-9">
+                        <div class="post-item card">
+                            <div class="card-header d-flex align-items-center">
+                                <?php
+                                $sql = "SELECT users.id AS 'USERID', users.username AS 'USERNAME', users.name AS 'NAME', profiles.profile_photo AS 'PROFILE_PHOTO' FROM users, profiles WHERE users.id = profiles.users_id AND users.id={$user_post_id};";
+                                $result = $conn->query($sql);
+                                $result = $result->fetch_assoc();
+                                ?>
+                                <a class="d-flex align-items-center" href="<?php echo "./profile.php?user_id=".$user_post_id; ?>"><img src="<?php echo get_dir_url()."profile_images/".$result['PROFILE_PHOTO']; ?>" class="profile-icon img-fluid rounded-circle" alt="">
+                                    <h5 class="user-name font-weight-200 ml-3 mt-2"><?php echo $result['USERNAME']; ?></h5>
+                                </a>
+                                <small class="ml-auto"><?php echo get_time_difference("$post_date $post_time"); ?></small>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="post-text mx-2 m-2">
+                                    <h4 class="card-title"><?php echo $post_title; ?></h4>
+                                    <p class="card-text">
+                                        <?php echo $post_data; ?>
+                                    </p>
+                                </div>
+                                <div class="post-images">
+                                    <?php
+                                    $sql = "SELECT `id`, `posts_id`, `images` FROM `post_images` WHERE posts_id={$post_id};";
+                                    $post_images = $conn->query($sql);
+                                    if ($post_images->num_rows == 1) {
+                                        $images = $post_images->fetch_assoc();
+                                        $images = explode(';', $images['images']);
+                                        ?>
+                                        <?php
+                                        if (count($images) == 1) {
+                                            ?>
+                                            <img src="<?php echo $images[0]; ?>" class="post-img-1 card-img-bottom m-auto p-1" alt="">
+                                        <?php
+                                    }
+                                    if (count($images) == 2) {
+                                        foreach ($images as $image) {
+                                            ?>
+                                                <img src="<?php echo $image; ?>" class="post-img-2 card-img-bottom m-auto p-1" alt="">
+                                            <?php
+                                        }
+                                    }
+                                    if (count($images) == 3) {
+                                        foreach ($images as $image) {
+                                            ?>
+                                                <img src="<?php echo $image; ?>" class="post-img-3 card-img-bottom m-auto p-1" alt="">
+                                            <?php
+                                        }
+                                    }
+                                    if (count($images) == 4) {
+                                        foreach ($images as $image) {
+                                            ?>
+                                                <img src="<?php echo $image; ?>" class="post-img-4 card-img-bottom m-auto p-1" alt="">
+                                            <?php
+                                        }
+                                    }
+                                    if (count($images) > 4) {
+                                        foreach ($images as $image) {
+                                            ?>
+                                                <img src="<?php echo $image; ?>" class="post-img-* card-img-bottom m-auto p-1" alt="">
+                                            <?php
+                                        }
+                                    }
+                                    ?>
+                                    <?php
+                                }
+                                ?>
+
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <a href="#" class="ml-1"><span class="likes"><?php echo $total_likes; ?></span> peoples liked this</a>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-4 text-center">
+                                        <?php
+                                        $sql = "SELECT `id`, `posts_id`, `users_id` FROM `likes` WHERE posts_id={$post_id} AND users_id={$_SESSION['user_id']};";
+                                        $likes = $conn->query($sql);
+                                        if ($likes->num_rows == 1) {
+                                            $like_status = true;
+                                        } else {
+                                            $like_status = false;
+                                        }
+                                        ?>
+                                        <a href="" id="post-like" class="btn <?php echo ($like_status ? 'btn-primary' : 'btn-outline-dark'); ?> w-100">
+                                            <i class="fa <?php echo ($like_status ? 'liked' : 'unliked'); ?>" aria-hidden="true"></i>
+                                            <span id='like-text'><?php echo ($like_status ? 'Unlike' : 'Like'); ?></span><span class="likes badge badge-primary"><?php echo $total_likes; ?></span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a href="#comment-text" class="btn btn-outline-dark w-100">
+                                            <i class="fa fa-comment" aria-hidden="true"></i>
+                                            Comment <span class="badge badge-primary"><?php echo $total_comments; ?></span>
+                                        </a>
+                                    </div>
+                                    <div class="col-4 text-center">
+                                        <a href="#" class="btn btn-outline-dark w-100">
+                                            <i class="fa fa-share" aria-hidden="true"></i>
+                                            Share <span class="badge badge-primary">0</span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="post-comments" class="post-comments">
+                                            <ul class="list-group list-group-flush">
+                                                <?php
+                                                $sql = "SELECT comments.id AS 'COMMENT_ID', comments.users_id AS 'USER_ID', comments.comment AS 'COMMENT', comments.comment_date AS 'COMMENT_DATE', comments.comment_time AS 'COMMENT_TIME', users.username AS 'COMMENT_USERNAME', profiles.profile_photo AS 'PROFILE_PHOTO' FROM comments, users, profiles WHERE users.id = comments.users_id AND users.id = profiles.users_id AND posts_id={$post_id};";
+                                                $post_comments = $conn->query($sql);
+                                                if ($post_comments->num_rows > 0) {
+                                                    while ($comment = $post_comments->fetch_assoc()) {
+                                                        ?>
+                                                        <li class="list-group-item d-flex">
+                                                            <img src="<?php echo get_dir_url()."profile_images/".$comment['PROFILE_PHOTO'] ?>" class="profile-icon mr-2" alt="">
+                                                            <blockquote class="comment">
+                                                                <p data="<?php echo $comment['COMMENT_ID']; ?>" class="mb-0 ove"><?php echo $comment['COMMENT']; ?></p>
+                                                                <footer class="blockquote-footer">by <a href="./profile.php?user_id=<?php echo $comment['USER_ID']; ?>"><cite><?php echo $comment['COMMENT_USERNAME']; ?></cite></a></footer>
+                                                            </blockquote>
+                                                            <?php
+                                                            if ($comment['USER_ID'] == $_SESSION['user_id']) {
+                                                                // data-toggle="modal" data-target="#largeModal"
+                                                                ?>
+                                                                <a href="#" class="edit-comment small ml-auto">Edit</a>
+                                                            <?php
+                                                        }
+                                                        ?>
+                                                        </li>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                            </ul>
+                                            <form action="./comment_script.php" method="post" class="form">
+                                                <div class="form-inline d-flex">
+                                                    <input type="hidden" name="post_id" value="<?php echo $post_id; ?>">
+                                                    <div class="input-group flex-fill">
+                                                        <input type="text" name="comment_text" id="comment-text" class="form-control" placeholder="What's your thoughts?" required>
+                                                    </div>
+                                                    <div class="input-group ml-1">
+                                                        <input type="submit" name="comment_submit" class="btn btn-primary fa" value="&#xf1d9; Comment">
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            <form id="edit-comment">
+                                                <div class="modal fade" id="largeModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h4 class="modal-title" id="myModalLabel">Edit Comment</h4>
+                                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <input type="hidden" id="comment-id" name="comment_id" value="">
+                                                                <textarea class="w-100" name="comment_text" id="comment-text" style="min-height:10vh;max-height:10vh;"></textarea>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                <input type="submit" class="btn btn-primary" name="edit_comment" value="Save changes">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="col-2 p-0">
+                        <?php include "./includes/chat-section.php"; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $('#post-like').click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "GET",
+            datatype: "json",
+            url: "like_script.php",
+            data: "post_id=<?php echo $post_id; ?>&user_id=<?php echo $_SESSION['user_id']; ?>",
+            cache: false,
+            success: function(data) {
+                data = JSON.parse(data);
+                if (data.status == 'liked') {
+                    $('.likes').text(data.total_likes);
+                    $('#post-like').removeClass('btn-outline-dark');
+                    $('#post-like').addClass('btn-primary');
+                    $('#like-text').text('Unlike');
+                    $('.unliked').addClass('liked').removeClass('unliked');
+                } else if (data.status == 'unliked') {
+                    $('.likes').text(data.total_likes);
+                    $('#post-like').removeClass('btn-primary');
+                    $('#post-like').addClass('btn-outline-dark');
+                    $('#like-text').text('Like');
+                    $('.liked').addClass('unliked').removeClass('liked');
+                } else {
+                    alert(data.status);
+                }
+            },
+            error: function(jqXHR, exception) {
+                alert('error: ' + eval(jqXHR.status));
+            }
+        });
+    });
+
+    var change_comment;
+    $(document).on('click', '.edit-comment', function(e) {
+        change_comment = $(this);
+        e.preventDefault();
+        var comment_text = $(this).prev('.comment').children().first().text();
+        var comment_id = $(this).prev('.comment').children().first().attr('data');
+        var modal = $('#largeModal');
+        modal.find('#comment-id').val(comment_id);
+        modal.find('#comment-text').val(comment_text);
+        modal.modal('show');
+    });
+
+    $('#edit-comment').submit(function(e){
+        e.preventDefault();
+        var form_data = $(this).serialize();
+        $.ajax({
+            type: "POST",
+            datatype: "json",
+            url: "edit_comment_script.php",
+            data: form_data,
+            cache: false,
+            success: function(data) {
+                $('#largeModal').modal('hide');
+                data = JSON.parse(data);
+                if (data.status == 'updated') {
+                    change_comment.prev('.comment').children().first().text(data.comment_text);
+                } else if (data.status == 'failed') {
+                    alert('Error! ' + data.reason);
+                } else {
+                    alert('Server Error! ' + data.error_text);
+                }
+            },
+            error: function(jqXHR, exception) {
+                alert('error: ' + eval(jqXHR.status));
+            }
+        });
+    });
+</script>
+
+</html>
